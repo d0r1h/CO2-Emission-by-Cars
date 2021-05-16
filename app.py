@@ -1,14 +1,31 @@
-from flask import Flask, render_template, request
+import pickle
 import jsonify
 import requests
-import pickle
 import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from flask import Flask, render_template, request
+from sklearn.model_selection import train_test_split
 
 
+
+
+data=pd.read_csv('final_co2.csv',index_col=0)
+
+X=data.drop(['CO2_Emissions'],axis=1)
+y=data['CO2_Emissions']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
+
+reg=LinearRegression()
+reg.fit(X_train,y_train)
+
+
+filename = 'finalized_model.pkl'
+pickle.dump(reg, open(filename, 'wb'))
 
 
 app = Flask(__name__)
-model = pickle.load(open('co2 emission.pkl', 'rb'))
+model = pickle.load(open('finalized_model.pkl', 'rb'))
 
 
 @app.route('/',methods=['GET'])
@@ -797,53 +814,13 @@ def predict():
             Fuel_Type_Z=0	
 
 
-    final_feature= [[
-        1, 
-        Engine_Size,
-        Cylinders,
-        Fuel_Consumption_City,
-        Fuel_Consumption_Hwy,
-        Fuel_Consumption_Comb,
-        Fuel_Consumption_Comb_mpg,
-        Vehicle_Class_Type_SUV,
-        Vehicle_Class_Type_Sedan, 	
-        Vehicle_Class_Type_Truck,
-        Make_Type_Luxury,
-        Make_Type_Premium,
-        Make_Type_Sports,
-        Transmission_A4, 	
-        Transmission_A5, 	
-        Transmission_A6, 	
-        Transmission_A7, 	
-        Transmission_A8, 	
-        Transmission_A9, 	
-        Transmission_AM5, 	
-        Transmission_AM6, 	
-        Transmission_AM7, 	
-        Transmission_AM8, 	
-        Transmission_AM9, 	
-        Transmission_AS10, 	
-        Transmission_AS4, 	
-        Transmission_AS5, 	
-        Transmission_AS6, 	
-        Transmission_AS7, 	
-        Transmission_AS8, 	
-        Transmission_AS9, 	
-        Transmission_AV, 	
-        Transmission_AV10, 	
-        Transmission_AV6, 	
-        Transmission_AV7, 	
-        Transmission_AV8, 	
-        Transmission_M5,	
-        Transmission_M6, 	
-        Transmission_M7,
-        Fuel_Type_E, 	
-        Fuel_Type_X, 	
-        Fuel_Type_Z, 
-        ]]
+        def lr(Engine_Size, Cylinders, Fuel_Consumption_City,Fuel_Consumption_Hwy, Fuel_Consumption_Comb,Fuel_Consumption_Comb_mpg,Fuel_Type_E, Fuel_Type_X,Fuel_Type_Z, Transmission_A4, Transmission_A5, Transmission_A6,Transmission_A7, Transmission_A8, Transmission_A9,Transmission_AM5, Transmission_AM6, Transmission_AM7,Transmission_AM8, Transmission_AM9, Transmission_AS10,Transmission_AS4, Transmission_AS5, Transmission_AS6,Transmission_AS7, Transmission_AS8, Transmission_AS9,Transmission_AV, Transmission_AV10, Transmission_AV6,Transmission_AV7, Transmission_AV8, Transmission_M5,Transmission_M6, Transmission_M7, Make_Type_Luxury,Make_Type_Premium, Make_Type_Sports, Vehicle_Class_Type_SUV,Vehicle_Class_Type_Sedan, Vehicle_Class_Type_Truck):
+            c=pd.DataFrame([Engine_Size, Cylinders, Fuel_Consumption_City,Fuel_Consumption_Hwy, Fuel_Consumption_Comb,Fuel_Consumption_Comb_mpg,Fuel_Type_E, Fuel_Type_X,Fuel_Type_Z, Transmission_A4, Transmission_A5, Transmission_A6,Transmission_A7, Transmission_A8, Transmission_A9,Transmission_AM5, Transmission_AM6, Transmission_AM7,Transmission_AM8, Transmission_AM9, Transmission_AS10,Transmission_AS4, Transmission_AS5, Transmission_AS6,Transmission_AS7, Transmission_AS8, Transmission_AS9,Transmission_AV, Transmission_AV10, Transmission_AV6,Transmission_AV7, Transmission_AV8, Transmission_M5,Transmission_M6, Transmission_M7, Make_Type_Luxury,Make_Type_Premium, Make_Type_Sports, Vehicle_Class_Type_SUV,Vehicle_Class_Type_Sedan, Vehicle_Class_Type_Truck]).T
+            return model.predict(c)
+          
     
-    prediction=model.predict(final_feature)
-    return render_template('index.html',prediction_text="Co2 Emissions by car is {}".format(prediction))
+    prediction=lr(Engine_Size, Cylinders, Fuel_Consumption_City,Fuel_Consumption_Hwy, Fuel_Consumption_Comb,Fuel_Consumption_Comb_mpg,Fuel_Type_E, Fuel_Type_X,Fuel_Type_Z, Transmission_A4, Transmission_A5, Transmission_A6,Transmission_A7, Transmission_A8, Transmission_A9,Transmission_AM5, Transmission_AM6, Transmission_AM7,Transmission_AM8, Transmission_AM9, Transmission_AS10,Transmission_AS4, Transmission_AS5, Transmission_AS6,Transmission_AS7, Transmission_AS8, Transmission_AS9,Transmission_AV, Transmission_AV10, Transmission_AV6,Transmission_AV7, Transmission_AV8, Transmission_M5,Transmission_M6, Transmission_M7, Make_Type_Luxury,Make_Type_Premium, Make_Type_Sports, Vehicle_Class_Type_SUV,Vehicle_Class_Type_Sedan, Vehicle_Class_Type_Truck)
+    return render_template('index.html',prediction_text="Co2 Emissions by car is {}".format(np.round(prediction,2)))
   
 
 if __name__=="__main__":

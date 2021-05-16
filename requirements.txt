@@ -5,6 +5,7 @@ Flask==1.1.2
 idna==2.10
 itsdangerous==1.1.0
 Jinja2==2.11.3
+joblib==1.0.1
 jsonify==0.5
 MarkupSafe==1.1.1
 numpy==1.19.5
@@ -13,9 +14,12 @@ patsy==0.5.1
 python-dateutil==2.8.1
 pytz==2021.1
 requests==2.25.1
+scikit-learn==0.24.2
 scipy==1.5.4
 six==1.16.0
+sklearn==0.0
 statsmodels==0.12.2
+threadpoolctl==2.1.0
 urllib3==1.26.4
 Werkzeug==1.0.1
 wincertstore==0.2
