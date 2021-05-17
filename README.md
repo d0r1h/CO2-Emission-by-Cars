@@ -3,4 +3,4 @@ A reliable End to End Machine Learning Model to predict CO2 Emissions in differe
 
 # Infrastructure
 
-![](/static/'C02 Arch Diagram.png')
+![](/static/C02 Arch Diagram.png)
