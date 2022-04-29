@@ -26,7 +26,7 @@ A reliable End to End Machine Learning Model to predict CO2 Emissions in differe
             
     3. Install Dependency
     
-           	pip install -r requirements.txt
+          	pip install -r requirements.txt
             
     4. Start application server
     
