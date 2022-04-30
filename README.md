@@ -3,7 +3,7 @@ A reliable End to End Machine Learning Model to predict CO2 Emissions in differe
 
 ### Description
 
-Task is build a machine learning model to predict CO2 emissions by different types of cars based on features such as:
+The task is to build a machine learning model to predict CO2 emissions by different types of cars based on features such as:
 
 * Model of car
 * Engine Size (in Litre)
@@ -11,14 +11,14 @@ Task is build a machine learning model to predict CO2 emissions by different typ
 * Class of vehicle
 * Fuel consumption (on highways, in city roads)
 
-Project also aims at testing the influence of different independent features on the emission of CO2 using statistal methods. 
+Project also aims at testing the influence of different independent features on the emission of CO2 using statistical methods. 
 
 <img src = "https://github.com/d0r1h/d0r1h.github.io/blob/main/assets/images/co2_emission.gif" width = 200>
 
 ### DataSet:
 
-* The dataset has been taken from Canada Government official open data website and available at [kaggle](https://www.kaggle.com/datasets/debajyotipodder/co2-emission-by-vehicles)
-* Cleaned and processed version of the data can be accessed from here [Link](https://raw.githubusercontent.com/d0r1h/CO2-Emission-by-Cars/main/final_co2.csv)
+* The dataset has been taken from the Canada Government official open data website and is available in [kaggle](https://www.kaggle.com/datasets/debajyotipodder/co2-emission-by-vehicles)
+* Cleaned and processed version of the data can be accessed from [here](https://raw.githubusercontent.com/d0r1h/CO2-Emission-by-Cars/main/final_co2.csv)
 * Dataset contains 7385 datapoints and 12 columns.
 
 
@@ -28,10 +28,10 @@ Notebook contains the EDA, data processing, and model building ideas.
 
 | Notebook | Colab | Kaggle |
 | ------ | ------ | ------ |
-| Co2 Emission | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/d0r1h/CO2-Emission-by-Cars/blob/main/notebook/co2-emission-by-cars.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/undersc0re/co2-emission-by-cars) |
+| CO2 Emission | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/d0r1h/CO2-Emission-by-Cars/blob/main/notebook/co2-emission-by-cars.ipynb) | [![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code/undersc0re/co2-emission-by-cars) |
 
 ### Models
-We experimented different methods for model building 
+We experimented with different methods for model building 
 
 * OLS Regression
 * Ridge Regression
@@ -47,7 +47,7 @@ We experimented different methods for model building
 ### Techstack
 
 **Python version** : 3.7 <br>
-**Packages**: pandas, numpy, seaborn, sklearn, mlxtend, statsmodels, mlxtend<br>
+**Packages**: pandas, numpy, seaborn, sklearn, mlxtend, statsmodels <br>
 **Cloud**: heroku
 
 ### Usage [running locally]:
@@ -74,7 +74,7 @@ python app.py
 
 ### Inference Demo:
 
-Application is deployed on heroku and can be accessed on https://coemission.herokuapp.com/ and following data can be used to test the application. 
+Application is deployed on heroku and can be accessed at https://coemission.herokuapp.com/ and following data can be used to test the application. 
 
 |Engine Size|Cylinders|Fuel Consumption City|Fuel Consumption Hwy|Fuel Consumption Comb| Fuel Consumption Comb (mpg) | Fuel Types | Transmission type | Make | Vechicle Class | CO2 Emissions | 
 | ------------- | ------------- | -------- | -------- |-------- |------- |------- | ------ | ------- | ------- | ------- |
