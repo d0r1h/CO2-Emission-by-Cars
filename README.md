@@ -52,7 +52,7 @@ We experimented different methods for model building
 
 ### Usage [running locally]:
 
-```
+```python
 conda create -n envname python=3.7
 activate envname
 git clone https://github.com/d0r1h/CO2-Emission-by-Cars.git
