@@ -13,7 +13,7 @@ The task is to build a machine learning model to predict CO2 emissions by differ
 
 Project also aims at testing the influence of different independent features on the emission of CO2 using statistical methods. 
 
-<img src = "https://github.com/d0r1h/d0r1h.github.io/blob/main/assets/images/co2_emission.gif" width = 200>
+<img src = "https://github.com/d0r1h/CO2-Emission-by-Cars/blob/main/static/co2_emission.gif" width = 200>
 
 ### DataSet:
 
@@ -40,7 +40,7 @@ We experimented with different methods for model building
 
 ## Project Pipeline
 
-<img src = "C02_Arch_Diagram.png" width = 800>
+<img src = "static/C02_Arch_Diagram.png" width = 800>
 
 
 
@@ -69,7 +69,7 @@ python app.py
 * Following image shows score table for different models
 
 
-<img src = "https://github.com/d0r1h/CO2-Emission-by-Cars/blob/main/co2_score.png" width = 800> 
+<img src = "https://github.com/d0r1h/CO2-Emission-by-Cars/blob/main/static/co2_score.png" width = 800> 
 
 
 ### Inference Demo:
